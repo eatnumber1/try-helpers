@@ -1,0 +1,24 @@
+#!/usr/bin/env zsh
+emulate -L zsh
+setopt err_exit nounset
+#setopt xtrace
+
+path+=( "/usr/local/dcs/bin" )
+
+[[ "$1" != "refs/heads/master" ]] && exit 0
+export GIT_DIR="$PWD"
+cd ..
+git reset --hard
+
+typeset -r SPECFILE="TRYSPEC"
+
+if [[ ! -f "$SPECFILE" ]]; then
+	printf "No try specfile found. Not submitting with try.\n" >&2
+	exit 0
+fi
+
+source "$SPECFILE"
+
+try --batch "$INSTRUCTOR" "$PROJECT" "${FILES[@]}"
+
+# vim:ft=zsh

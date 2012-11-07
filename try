@@ -1,0 +1,33 @@
+#!/usr/bin/env zsh
+emulate -L zsh
+setopt err_exit nounset
+#setopt xtrace
+
+zmodload -F zsh/zutil +b:zparseopts
+zparseopts -D -K -E -batch=batch
+
+function try {
+	readonly TRY="/usr/local/dcs/bin/try"
+	if (( $+batch )); then
+		{
+			setopt noxtrace
+			while true; do
+				echo -n '\n'
+			done
+		} < /dev/null | exec "$TRY" "$@"
+	else
+		exec "$TRY" "$@"
+	fi
+}
+
+typeset -r SPECFILE="TRYSPEC"
+
+if [[ ! -f "$SPECFILE" || $# -ne 0 ]]; then
+	exec try "$@"
+fi
+
+source "$SPECFILE"
+
+try "$INSTRUCTOR" "$PROJECT" "${FILES[@]}"
+
+# vim:ft=zsh
