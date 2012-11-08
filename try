@@ -17,14 +17,14 @@ function try {
 			done
 		} < /dev/null | exec "$TRY" "$@"
 	else
-		exec "$TRY" "${tryopts[@]}" "$@"
+		exec "$TRY" "$@"
 	fi
 }
 
 typeset -r SPECFILE="TRYSPEC"
 
 if [[ ! -f "$SPECFILE" || $# -ne 0 ]]; then
-	exec try "$@"
+	exec try "${tryopts[@]}" "$@"
 fi
 
 source "$SPECFILE"
