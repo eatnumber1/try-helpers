@@ -4,7 +4,8 @@ setopt err_exit nounset
 #setopt xtrace
 
 zmodload -F zsh/zutil +b:zparseopts
-zparseopts -D -K -E -batch=batch
+typeset -a tryopts
+zparseopts -D -K -E -a tryopts -batch=batch q
 
 function try {
 	readonly TRY="/usr/local/dcs/bin/try"
@@ -28,6 +29,6 @@ fi
 
 source "$SPECFILE"
 
-try "$INSTRUCTOR" "$PROJECT" "${FILES[@]}"
+try "${tryopts[@]}" "$INSTRUCTOR" "$PROJECT" "${FILES[@]}"
 
 # vim:ft=zsh
