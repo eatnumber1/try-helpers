@@ -5,7 +5,7 @@ setopt nounset err_exit
 
 readonly TRY_HELPERS_HOME="$HOME/Sources/try-helpers"
 
-git init
+git init "$@"
 zmodload -F zsh/files +b:ln
 ln -s "$TRY_HELPERS_HOME"/post-update .git/hooks
 git config receive.denyCurrentBranch ignore
