@@ -8,8 +8,9 @@ the CS machines.
 
 ## TRYSPEC
 All of these tools depend upon the existence of a file named TRYSPEC in your
-repository. This file is a ZSH script which describes how the project should be
-submitted. An example TRYSPEC follows:
+repository. There must be a different TRYSPEC for every repository / project.
+This file is a ZSH script which describes how the project should be submitted.
+An example TRYSPEC follows:
 
 	typeset -r INSTRUCTOR="wrc-grd"
 	typeset -r PROJECT="cg1-h1"
