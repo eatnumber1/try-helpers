@@ -17,7 +17,7 @@ function try {
 			done
 		} < /dev/null | exec "$TRY" "$@"
 	else
-		exec "$TRY" "$@"
+		exec "$TRY" "${tryopts[@]}" "$@"
 	fi
 }
 
