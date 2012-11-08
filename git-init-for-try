@@ -3,7 +3,10 @@ emulate -L zsh
 setopt nounset err_exit
 #setopt xtrace
 
-readonly TRY_HELPERS_HOME="$HOME/Sources/try-helpers"
+if ! (( $+TRY_HELPERS_HOME )); then
+	echo "You must set TRY_HELPERS_HOME to the directory of the checked out try-helpers repository." >&2
+	exit 1
+fi
 
 git init "$@"
 zmodload -F zsh/files +b:ln
