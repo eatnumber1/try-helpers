@@ -23,9 +23,9 @@ An example TRYSPEC follows:
 - On the CS machines, symlink (or copy) the "try" and "git-init-for-try" scripts
   into some directory in your path. Mine is "~/bin". Make sure the directory you
   place it in is in your path in front of where the real "try" is.
-- Add an exported environment variable called "TRY_HELPERS_HOME" set to the
-  location of your checked out try-helpers repository. You can do this by
-  placing the following line in your bashrc:
+- Add an exported environment variable called "TRY_HELPERS_HOME" to your shell's
+  rc file. Set it to the location of your checked out try-helpers repository.
+  You can do this by placing the following line in your bashrc:
   `export TRY_HELPERS_HOME="$HOME/path_to_repository"`
 
 # Usage
