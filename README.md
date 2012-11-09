@@ -12,12 +12,9 @@ repository. There must be a different TRYSPEC for every repository / project.
 This file is a ZSH script which describes how the project should be submitted.
 An example TRYSPEC follows:
 
-	typeset -r INSTRUCTOR="wrc-grd"
-	typeset -r PROJECT="cg1-h1"
-	
 	typeset -a FILES
 	FILES=( "hw1.txt" )
-	typeset -r FILES
+	readonly FILES INSTRUCTOR="wrc-grd" PROJECT="cg1-h1"
 
 # Installation
 - On the CS machines, symlink (or copy) the "try" and "git-init-for-try" scripts
